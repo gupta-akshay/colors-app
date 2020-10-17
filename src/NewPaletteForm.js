@@ -12,6 +12,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 import Button from "@material-ui/core/Button"
 import { ChromePicker } from "react-color"
+import DraggableColorBox from "./DraggableColorBox"
 
 const drawerWidth = 400
 
@@ -56,6 +57,7 @@ const styles = (theme) => ({
   },
   content: {
     flexGrow: 1,
+    height: "calc(100vh -64px)",
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
@@ -97,12 +99,13 @@ class NewPaletteForm extends Component {
   }
 
   addNewColor() {
-    this.setState({ colors: [...this.state.colors, this.state.currentColor] })
+    const { colors, currentColor } = this.state
+    this.setState({ colors: [...colors, currentColor] })
   }
 
   render() {
     const { classes } = this.props
-    const { open } = this.state
+    const { open, colors, currentColor } = this.state
 
     return (
       <div className={classes.root}>
@@ -152,13 +155,13 @@ class NewPaletteForm extends Component {
             </Button>
           </div>
           <ChromePicker
-            color={this.state.currentColor}
+            color={currentColor}
             onChangeComplete={this.updateCurrentColor}
           />
           <Button
             variant="contained"
             color="primary"
-            style={{ backgroundColor: this.state.currentColor }}
+            style={{ backgroundColor: currentColor }}
             onClick={this.addNewColor}
           >
             Add Color
@@ -170,8 +173,11 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          {colors.map(color => (
+            <DraggableColorBox color={color} />
+          ))}
           <ul>
-            {this.state.colors.map((color) => (
+            {colors.map((color) => (
               <li style={{ backgroundColor: color }}>{color}</li>
             ))}
           </ul>
