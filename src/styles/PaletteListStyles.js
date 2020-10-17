@@ -16,9 +16,13 @@ export default {
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    /* background by SVGBackgrounds.com */
     backgroundColor: "#394bad",
     backgroundImage: `url(${bg})`,
     overflow: "scroll",
+  },
+  heading: {
+    fontSize: "2rem",
   },
   container: {
     width: "50%",
