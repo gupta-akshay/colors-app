@@ -12,6 +12,7 @@ const styles = {
   colorNameInput: {
     width: "100%",
     height: "70px",
+    margin: "40px 0 0 0",
   },
 }
 

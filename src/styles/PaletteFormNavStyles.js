@@ -33,6 +33,9 @@ const styles = (theme) => ({
   },
   navBtns: {
     marginRight: "1rem",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     "& a": {
       textDecoration: "none",
     },
@@ -42,6 +45,7 @@ const styles = (theme) => ({
   },
   button: {
     margin: "0 0.5rem",
+    width: "auto !important",
     [sizes.down("xs")]: {
       margin: "0 0.2rem",
       padding: "0.3rem",
